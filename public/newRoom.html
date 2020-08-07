@@ -10,6 +10,8 @@
 </head>
 <body>
     <div id="mario-chat">
+        <h2 id="room-header">Room Name</h2>
+
         <div id="chat-window">
             <div id="output"></div>
             <div id="feedback"></div>
@@ -18,14 +20,9 @@
         <input type="text" id="message" placeholder="message">
         <button id="send">Send</button>
     </div>
-
-    <h2 id="error"></h2>
     <div>
-        <form id="join-form">
-            <input type="text" id="room-name" placeholder="room name" required> 
-            <button type="submit">Join room</button>
-        </form>
+        <button id="disconnect">Disconnect</button>
     </div>
-    <script src="chat.js"></script>
+    <script src="newRoom.js"></script>
 </body>
 </html>

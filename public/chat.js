@@ -1,16 +1,22 @@
 ///make connection //we have access to the io variable beacause of the library we loaded into index.html
-const socket = io.connect("http://localhost:5000");
+const socket = io();
 // const
 let timeOut;
 
-//Query dom
+// //Query dom
 
 const message = document.getElementById("message"),
       handle = document.getElementById("handle"),
       btn = document.getElementById("send"),
       output = document.getElementById("output"),
       feedback = document.getElementById("feedback"),
-      chatWindow = document.getElementById("chat-window");
+      chatWindow = document.getElementById("chat-window"),
+      form = document.getElementById("join-form"),
+      roomInput = document.getElementById("room-name"),
+      errorHeading = document.getElementById("error")
+
+      
+
 
 ///emit event
 btn.addEventListener("click", ()=>{
@@ -63,4 +69,17 @@ socket.on("connect", ()=>{
     console.log(socket.id);
 })
 
+//read the name of the room and send a request to join room //then send them to the new page if accepted
+form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const roomName = roomInput.value;
+    //upload to local storage;
+     localStorage.setItem("roomName", `${roomName}`);
+     //take them to the new page
+    window.location.href = "newRoom.html";
 
+})
+
+// comedy.on("welcome", data=>{
+//     console.log(data) 
+// })
