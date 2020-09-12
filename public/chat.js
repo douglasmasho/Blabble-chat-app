@@ -47,7 +47,7 @@ socket.on("chat", (data)=>{
     switch(data.id){
         case socket.id: color = "#69ff69";
         break;
-        default: color = "none"
+        default: color = "#00CDF6"
     }
     //this is the data coming back from the server
     output.innerHTML += `<p style="background-color: ${color}"><strong>${data.handle}:</strong> ${data.message}</p>`;

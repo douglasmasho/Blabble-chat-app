@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web sockets </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.7.1/simplepeer.min.js" integrity="sha512-jX6RKA2oUpLMktueye03uSfAhAdaEycJTi1ei++fLfqxb7DMmWcYtvXAiu1t263KDw2rXM4T7Ha4hOxAO7Zlhg==" crossorigin="anonymous"></script>
+    <!-- <script src="./simplepeer.min.js"></script> -->
+    <style>
+        #video-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 300px);
+            grid-auto-rows: 300px;
+        }
+        video{
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
-    <div id="mario-chat">
+    <div class="logo-container">
+        <img src="./blabble.svg" alt="" class="logo">
+    </div>
+    <div id="chat">
         <h2 id="room-header">Room Name</h2>
 
         <div id="chat-window">
@@ -23,6 +38,8 @@
     <div>
         <button id="disconnect">Disconnect</button>
     </div>
+
+
     <script src="newRoom.js"></script>
 </body>
 </html>

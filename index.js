@@ -6,9 +6,12 @@ const socket = require("socket.io");
 //App setup
 const app = express();
 
-const server = app.listen(5000, ()=>{
-    console.log("listening to request on port 5000")
+const PORT = process.env.PORT || 5000;
+
+const server = app.listen(PORT, ()=>{
+    console.log("listening to request on port" + PORT)
 });
+
 
 
 //static files
@@ -44,20 +47,21 @@ io.on("connection", (socket)=>{
     })
 
      ///room chat
+     const rooms = {}
     socket.on("request", (name)=>{
         const accept = (name)=>{
-            console.log("joined")
             socket.join(name); //make the client join a room
             // console.log(io.sockets.adapter.rooms[name].length);
             socket.emit("result", "accept")
-            socket.to(name).emit("attention", "A new user has joined the room");
-            socket.emit("welcome", `welcome to the ${name} room`);  
+            
+            socket.to(name).emit("attention", socket.id);
+            socket.emit("welcome", io.sockets.adapter.rooms[name]);  
         }
 
         if(!io.sockets.adapter.rooms[name]){
             accept(name)
         }else{
-            if(io.sockets.adapter.rooms[name].length < 5){
+            if(io.sockets.adapter.rooms[name].length < 9){
                 accept(name)
             }else{
                 console.log("rejected");
@@ -87,29 +91,8 @@ io.on("connection", (socket)=>{
     socket.on("disconnecting", ()=>{
         console.log("user has disconnected")
         console.log(Object.keys(socket.rooms))
-    })
+    });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //create a comedy namespace

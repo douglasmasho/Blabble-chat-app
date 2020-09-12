@@ -25,17 +25,20 @@ const header = document.getElementById("room-header");
 
 header.textContent = roomName;
 
+let accepted;
 
 //send request  to join the new room
 socket.emit("request", roomName);
    socket.on("result", (data)=>{
         switch(data){
             case "accept": 
-            console.log("you have been accepted")
+            console.log("you have been accepted");
+            accepted = true;
                 break;
             case "reject": 
                  fullChat.innerHTML = `<h2>Sorry, the room is full, you have been disconnected</h2>`,
                  disconnectBtn.textContent = "go back";
+                 accepted = false;
                  disconnectBtn.addEventListener("click", ()=>{
                     window.location.href = "/";
                  })
@@ -91,17 +94,6 @@ socket.on("chat", data=>{
 //listen for typing
 socket.on("roomTyping", (data)=>{
     feedback.innerHTML = `<p><em>${data.handle} is typing</em></p>`
-})
-
-
-//listen for attention
-socket.on("attention", (data)=>{
-    feedback.innerHTML = data
-})
-
-//catch the welcome message
-socket.on("welcome", (data)=>{
-    console.log(data);
 })
 
 
