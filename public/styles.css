@@ -3,8 +3,10 @@ html{
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
+
 
 h2{
     font-size: 18px;
@@ -69,7 +71,6 @@ input{
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #eee;
-    font-family: Nunito;
     font-size: 16px;
 }
 

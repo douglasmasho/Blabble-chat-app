@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const socket = require("socket.io");
 
-
 //App setup
 const app = express();
 
