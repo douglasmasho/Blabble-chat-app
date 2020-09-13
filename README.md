@@ -7,7 +7,4 @@ A chatting application with the ability to create and chat in private rooms of u
 ## Technologies used
 Socket.io, Node.js, Express.
 
-## Notable:
-This project works best on Google chrome or any chromium based browser (Microsoft Edge). Tutero Live does not work on mobile devices.
-
 ## [Live Demo](https://blabble.herokuapp.com/)
